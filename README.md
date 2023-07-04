@@ -1,4 +1,4 @@
-# github.com/shyaminayesh/docker-compose
+# docker-compose
 
 This repository contains docker compose configurations for different kinds of setups. Use the followings command to make each configuration set up and down.
 
