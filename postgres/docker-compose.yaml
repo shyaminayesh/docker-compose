@@ -1,0 +1,30 @@
+version: "3"
+
+networks:
+  internal:
+    name: postgres-internal
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.30.0/24
+
+
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:13.11-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dSrBmWg8swFKi694CJ5Av9QAh4hFuiGK
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@example.org
+      PGADMIN_DEFAULT_PASSWORD: dSrBmWg8swFKi694CJ5Av9QAh4hFuiGK
+    ports:
+      - "5050:80"
