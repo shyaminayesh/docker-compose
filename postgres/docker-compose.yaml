@@ -17,7 +17,7 @@ services:
     container_name: postgres
     image: postgres:13.11-alpine
     expose: [ 5432 ]
-    network:
+    networks:
       internal:
         ipv4_address: 172.30.30.10
     environment:
@@ -28,7 +28,7 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4
     expose: [ 5050 ]
-    network:
+    networks:
       internal:
         ipv4_address: 172.30.30.20
     environment:
