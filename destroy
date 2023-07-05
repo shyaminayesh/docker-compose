@@ -1,0 +1,3 @@
+#!/bin/bash
+docker kill postgres pgadmin
+docker rm postgres pgadmin
