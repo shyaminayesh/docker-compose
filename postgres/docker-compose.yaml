@@ -3,8 +3,9 @@ version: "3"
 networks:
   internal:
     name: postgres-internal
-    driver: bridge
+    external: false
     ipam:
+      driver: default
       config:
         - subnet: 172.30.30.0/24
 
@@ -12,10 +13,13 @@ networks:
 services:
 
   postgres:
+    hostname: postgres
     container_name: postgres
     image: postgres:13.11-alpine
-    ports:
-      - "5432:5432"
+    expose: [ 5432 ]
+    network:
+      internal:
+        ipv4_address: 172.30.30.10
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: dSrBmWg8swFKi694CJ5Av9QAh4hFuiGK
@@ -23,8 +27,7 @@ services:
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
+    expose: [ 5050 ]
     environment:
       PGADMIN_DEFAULT_EMAIL: postgres@example.org
       PGADMIN_DEFAULT_PASSWORD: dSrBmWg8swFKi694CJ5Av9QAh4hFuiGK
-    ports:
-      - "5050:80"
