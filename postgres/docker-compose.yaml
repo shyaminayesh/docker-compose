@@ -29,9 +29,8 @@ services:
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
-    expose: [ 5050 ]
     ports:
-      - 5050:5050
+      - 8889:8889
     networks:
       internal:
         ipv4_address: 172.30.30.20
