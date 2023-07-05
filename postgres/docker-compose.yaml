@@ -3,7 +3,7 @@ version: "3.6"
 networks:
   internal:
     name: postgres-internal
-    external: false
+    external: true
     ipam:
       driver: default
       config:
