@@ -1,0 +1,26 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+api:
+  insecure: true
+  dashboard: true
+
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+
+
+#certificatesResolvers:
+#  letsencrypt:
+#    acme:
+#      email:
+#      storage:
+#      httpChallenge:
+#        entryPoint: http
