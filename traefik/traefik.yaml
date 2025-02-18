@@ -14,8 +14,12 @@ entryPoints:
 
 providers:
   docker:
+    exposedByDefault: false
     endpoint: "unix:///var/run/docker.sock"
 
+
+accessLog:
+  format: "json"
 
 #certificatesResolvers:
 #  letsencrypt:

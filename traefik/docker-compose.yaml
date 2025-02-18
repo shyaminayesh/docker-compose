@@ -1,13 +1,8 @@
 ---
-
 networks:
   internal:
-    name: traefik-internal
-    external: false
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.20.20.0/24
+    name: internal
+    external: true
 
 
 services:
@@ -19,11 +14,11 @@ services:
     container_name: traefik
     networks:
       internal:
-        ipv4_address: 172.20.20.20
+        ipv4_address: 10.10.10.100
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - "/usr/share/traefik/traefik.yaml:/etc/traefik/traefik.yaml"
+      - "./traefik.yaml:/etc/traefik/traefik.yaml"
