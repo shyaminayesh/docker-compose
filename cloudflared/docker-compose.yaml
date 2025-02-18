@@ -5,7 +5,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.30.30.0/24
+        - subnet: 10.10.10.0/24
 
 services:
 
@@ -14,7 +14,11 @@ services:
     restart: unless-stopped
     container_name: cloudflared
     image: cloudflare/cloudflared:2025.2.0
-    command: tunnel --no-autoupdate run --token $TOKEN
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${TOKEN}
+    labels:
+      - "traefik.enable=false"
     networks:
       internal:
-        ipv4_address: 172.30.30.30
+        ipv4_address: 10.10.10.10
